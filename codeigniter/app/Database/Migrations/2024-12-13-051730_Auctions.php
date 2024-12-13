@@ -22,6 +22,9 @@ class Auctions extends Migration
             'description' => [
                 'type' => 'TEXT',
             ],
+            'image' => [
+                'type'=> 'TEXT',
+            ],
             'base_price' => [
                 'type' => 'DECIMAL',
                 'constraint' => '10,2',

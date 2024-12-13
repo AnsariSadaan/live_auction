@@ -9,7 +9,7 @@ class AuctionModel extends Model
     protected $table            = 'auctions';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['title', 'description', 'base_price', 'start_time', 'end_time', 'status'];

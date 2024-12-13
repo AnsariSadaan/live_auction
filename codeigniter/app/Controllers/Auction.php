@@ -1,29 +1,18 @@
 <?php
+
 namespace App\Controllers;
 
-use CodeIgniter\RESTful\ResourceController;
+use App\Models\AuctionModel;
 
-class Auction extends ResourceController
+class Auction extends BaseController
 {
-    protected $modelName = 'App\Models\AuctionModel';
-    protected $format    = 'json';
-
-    public function create()
-    {
-        $data = $this->request->getPost();
-
-        if ($this->model->insert($data)) {
-            return $this->respondCreated(['message' => 'Auction created successfully']);
+    public function auction(){
+        if (!$this->session->has('user')) {
+            return redirect()->to('/login');
         }
-
-        return $this->fail($this->model->errors());
+        $auction_model = new AuctionModel();
+        $auction = $auction_model->findAll();
+        return view('auction',[ "auction"=>$auction]);
     }
 
-    public function list()
-    {
-        $auctions = $this->model->findAll();
-        return $this->respond($auctions);
-    }
 }
-
-?>
