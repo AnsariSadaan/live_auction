@@ -11,7 +11,7 @@ class Auctions extends Migration
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
-                'constraint' => 11,
+                'constraint' => 5, // Match the size with users table
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
